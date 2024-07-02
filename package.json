@@ -2,16 +2,17 @@
   "name": "offerzplanet",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "netlify/functions/api.js",
   "engines": {
     "node": "18.x"
   },
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js",
+    "dev": "nodemon netlify/functions/api.js",
+    "start": "node netlify/functions/api.js",
     "build": "netlify deploy --prod"
   },
   "dependencies": {
+    "@netlify/functions": "^2.8.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
