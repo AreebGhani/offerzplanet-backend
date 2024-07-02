@@ -2,17 +2,15 @@
   "name": "offerzplanet",
   "version": "1.0.0",
   "description": "",
-  "main": "netlify/functions/api.js",
+  "main": "server.js",
   "engines": {
     "node": "18.x"
   },
   "scripts": {
-    "dev": "nodemon netlify/functions/api.js",
-    "start": "node netlify/functions/api.js",
-    "build": "netlify deploy --prod"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "dependencies": {
-    "@netlify/functions": "^2.8.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
@@ -23,11 +21,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.7.0",
     "multer": "^1.4.5-lts.1",
-    "netlify-cli": "^17.32.0",
-    "netlify-lambda": "^2.0.16",
     "nodemailer": "^6.9.14",
     "nodemon": "^2.0.22",
-    "serverless-http": "^3.2.0",
     "stripe": "^12.18.0"
   }
 }
