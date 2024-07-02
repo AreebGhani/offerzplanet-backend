@@ -1,13 +1,21 @@
 const express = require("express");
 const ErrorHandler = require("./middleware/error");
 const app = express();
+const router = express.Router();
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
+const serverless = require("serverless-http");
+// connect db
+const connectDatabase = require("./db/Database");
+connectDatabase();
+require("dotenv").config({
+  path: ".env",
+});
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://offerzplanet.vercel.app',
   credentials: true
 }));
 
@@ -17,6 +25,7 @@ app.use("/static", express.static(path.join(__dirname, "./uploads")));
 app.use("/", (req, res) => {
   res.send("Hello world!");
 });
+app.use("/.netlify/functions/app", router);
 
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
@@ -61,4 +70,4 @@ app.use("/api/config", config);
 // it's for ErrorHandling
 app.use(ErrorHandler);
 
-module.exports = app;
+module.exports.handler = serverless(app);
